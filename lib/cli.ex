@@ -50,7 +50,7 @@ defmodule BigText.CLI do
     |> List.to_string()
   end
 
-  defp emoji(char) when char == " ", do: ":invisible_parrot:"
+  defp emoji(char) when char == " ", do: "    "
   defp emoji(char) when char in @letters do
     ":letter_#{char}:"
   end
