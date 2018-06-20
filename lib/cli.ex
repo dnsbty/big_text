@@ -63,5 +63,7 @@ defmodule BigText.CLI do
     send(port, {self(), :close})
 
     text
+  rescue
+    _ -> text
   end
 end
