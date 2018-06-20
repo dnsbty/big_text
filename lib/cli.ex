@@ -6,6 +6,7 @@ defmodule BigText.CLI do
     args
     |> get_chars
     |> convert
+    |> copy
     |> IO.puts
   end
 
@@ -28,4 +29,12 @@ defmodule BigText.CLI do
   end
 
   defp emoji(char), do: char
+
+  defp copy(text) do
+    port = Port.open({:spawn, "pbcopy"}, [:binary])
+    send port, {self(), {:command, text}}
+    send port, {self(), :close}
+
+    text
+  end
 end
