@@ -18,6 +18,11 @@ bigtext your text here
 ```
 The text will be converted and printed out, and if you have `pbcopy` in your path, it will also be copied to your clipboard.
 
+If you would like jankier text (using :invisible_parrot: instead of four spaces to replace spaces), just add the `jank` flag:
+```bash
+bigtext janky text --jank
+```
+
 ## Development
 
 BigText is written as an Escript in Elixir. In order to run it, you will need to have Elixir and Erlang installed.

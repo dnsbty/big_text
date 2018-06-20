@@ -37,16 +37,17 @@ defmodule BigText.CLI do
   end
 
   defp get_chars(args) do
-    {_, word, _} = OptionParser.parse(args)
+    {opts, word, _} = OptionParser.parse(args, switches: [jank: :boolean])
 
-    Enum.join(word, " ")
+    {opts, Enum.join(word, " ")}
   end
 
-  defp convert(word) do
+  defp convert({opts, word}) do
     word
     |> String.downcase()
     |> String.codepoints()
     |> Enum.map(&emoji/1)
+    |> put_jank(opts)
     |> List.to_string()
   end
 
@@ -56,6 +57,15 @@ defmodule BigText.CLI do
   end
 
   defp emoji(char), do: char
+
+  defp put_jank(letters, [{:jank, true}]) do
+    Enum.map(letters, &jank_space/1)
+  end
+
+  defp put_jank(letters, _), do: letters
+
+  defp jank_space(letter) when letter == "    ", do: ":invisible_parrot"
+  defp jank_space(letter), do: letter
 
   defp copy(text) do
     port = Port.open({:spawn, "pbcopy"}, [:binary])
