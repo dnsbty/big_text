@@ -64,7 +64,7 @@ defmodule BigText.CLI do
 
   defp put_jank(letters, _), do: letters
 
-  defp jank_space(letter) when letter == "    ", do: ":invisible_parrot"
+  defp jank_space(letter) when letter == "    ", do: ":invisible_parrot:"
   defp jank_space(letter), do: letter
 
   defp copy(text) do
