@@ -9,7 +9,7 @@ in Slack.**
 
 You can install BigText by running the following command in your terminal:
 ```bash
-sudo curl -L -o /usr/local/bin/bigtext https://github.com/dnsbty/big_text/releases/download/latest/big_text ; sudo chmod +x /usr/local/bin/bigtext
+sudo curl -L -o /usr/local/bin/bigtext https://github.com/jasonalmaturner/big_text/releases/download/v0.0.3/big_text ; sudo chmod +x /usr/local/bin/bigtext
 ```
 
 After installing, you can then convert any text you want by running
